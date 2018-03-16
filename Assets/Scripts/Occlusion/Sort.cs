@@ -32,8 +32,8 @@ namespace iso.occlusion
             int side = CaculateSide(current.rect, target.rect);
             if (side < 0)
             {
-                //小于node
-                //把当前结点作为被检查结点的子元素
+                //小于target,目标结点遮挡当前结点。
+                //比较当前结点和目标结点的深度值。
                 //需要检查深度值。如果检查点所在的深度值大于等于当前结点所在的深度值，那么移过去深度值会增加，则执行移动操作，否则不需要
                 if (target.GetDeep() >= deep)
                 {
@@ -44,8 +44,8 @@ namespace iso.occlusion
             }
             else if (side > 0)
             {
-                //大于node
-                //由于关系不能明确，需要处理其子元素。
+                //大于target,当前结点遮挡目标结点。
+                //继续比较目标结点和当前结点的子结点之间的关系。
                 bool subAddedFlag = CompareChildren(current, target, deep);
 
                 if (!subAddedFlag)

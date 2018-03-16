@@ -18,6 +18,7 @@ namespace iso.occlusion
         public void AddChild(SortNode child)
         {
             m_Children.Add(child);
+            child.parent = this;
         }
 
         public void RemoeChild(SortNode child)
@@ -58,6 +59,10 @@ namespace iso.occlusion
             }
             set
             {
+                if (m_Parent != null)
+                {
+                    m_Parent.RemoeChild(this);
+                }
                 m_Parent = value;
             }
         }
