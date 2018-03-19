@@ -31,17 +31,18 @@ namespace iso.Renderer
 
 
             Vector3[] vertices = new Vector3[4];
-            Vector2[] uv = new Vector2[4] { new Vector2( 0,0), new Vector2( 1,0), new Vector2(1, 1), new Vector2( 0, 1 ) };
+            Vector2[] uv = new Vector2[4] { new Vector2(0, 1), new Vector2( 0,0), new Vector2( 1,0), new Vector2(1, 1)};
 
             Vector2 p = iso.IsoStaticCoordinateFormulae.gameToView2F(grid.x, grid.y);
             Vector3 pos = new Vector3(p.x, p.y, 0);
 
-            vertices[0] = pos + new Vector3(-0.32f,0, 0);
-            vertices[1] = pos + new Vector3(0, 0.16f, 0);
-            vertices[2] = pos + new Vector3(0.32f, 0,0);
-            vertices[3] = pos + new Vector3(0,-0.16f,0);
+            vertices[0] = pos;
+            vertices[1] = pos + new Vector3(-0.32f,0.16f, 0);
+            vertices[2] = pos + new Vector3(0, 0.32f, 0);
+            vertices[3] = pos + new Vector3(0.32f, 0.16f,0);
+           
 
-            int[] triangles = {0,1,3,1,2,3 };
+            int[] triangles = {0,1,2,0,2,3 };
 
             m_Mesh.vertices = vertices;
             m_Mesh.triangles = triangles;
